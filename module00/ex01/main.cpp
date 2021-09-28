@@ -29,7 +29,7 @@ int	main(void)
 			myPhonebook.add();
 		else if (strInput.compare("SEARCH") == 0)
 			myPhonebook.search();
-		else
+		else if (strInput.compare("EXIT") != 0)
 			std::cout << "Cannot process input, try again" << std::endl;
 	}
 	return (0);
