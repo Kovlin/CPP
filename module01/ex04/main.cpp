@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:51:19 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/09/29 21:16:45 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/01 17:32:40 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@
 
 int	main(int argc, char **argv)
 {
-	std::string s1 = argv[argc - 2];
-	std::string s2 = argv[argc - 1];
-	std::string filename = argv[argc - 3];
-
 	if (argc != 4)
 	{
 		std::cout << "Error: incorrect number of arguments" << std::endl;
 		return (1);
 	}
 
+	std::string s1 = argv[argc - 2];
+	std::string s2 = argv[argc - 1];
 	if (s1.empty() || s2.empty())
 	{
 		std::cout << "Error: empty string" << std::endl;
@@ -41,6 +39,7 @@ int	main(int argc, char **argv)
 	** fermeture du fichier
 	**/
 
+	std::string filename = argv[argc - 3];
 	std::ifstream	ifs(filename,  std::ifstream::in);
 	if (ifs.fail())
 	{
@@ -60,12 +59,14 @@ int	main(int argc, char **argv)
 	** on insert l'output dans le fichier output
 	**/
 
-	size_t	pos = output.find(s1);
+	size_t	offset = 0;
+	size_t	pos = output.find(s1, offset);
 	while (pos != std::string::npos)
 	{
 		output.erase(pos, s1.size());
 		output.insert(pos, s2);
-		pos = output.find(s1);
+		offset += pos +1;
+		pos = output.find(s1, offset);
 	}
 	std::ofstream	ofs(filename + ".replace");
 	if (ofs.fail())
