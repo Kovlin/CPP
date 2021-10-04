@@ -18,9 +18,9 @@ int	main()
 	std::string*	strPtr = &str;
 	std::string&	strRef = str;
 
-    std::cout << "Adress of str in memory:           " << &str << std::endl;
-    std::cout << "Adress of str in memory by strPtr: " << strPtr << std::endl;
-    std::cout << "Adress of str in memory by strRef: " << &strRef << std::endl;
+	std::cout << "Adress of str in memory:           " << &str << std::endl;
+	std::cout << "Adress of str in memory by strPtr: " << strPtr << std::endl;
+	std::cout << "Adress of str in memory by strRef: " << &strRef << std::endl;
     std::cout << std::endl;
     std::cout << "Str by ptr: " << *strPtr << std::endl;
     std::cout << "Str by ref: " << strRef << std::endl;

@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:51:19 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/01 17:32:40 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/04 14:17:04 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	{
 		output.erase(pos, s1.size());
 		output.insert(pos, s2);
-		offset += pos +1;
+		offset = pos + s2.size();
 		pos = output.find(s1, offset);
 	}
 	std::ofstream	ofs(filename + ".replace");
