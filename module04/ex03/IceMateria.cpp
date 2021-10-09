@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 15:59:51 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/08 16:45:21 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/09 16:04:50 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ IceMateria::~IceMateria(){
 }
 
 IceMateria&	IceMateria::operator=(IceMateria const &rhs){
+	this->type = rhs.getType();
 	return (*this);
 }
 

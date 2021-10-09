@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 16:53:55 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/08 17:26:16 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/09 17:22:49 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+#include "IceMateria.hpp"
+#include "CureMateria.hpp"
 
 class Character : public ICharacter{
 
@@ -35,6 +37,7 @@ public:
 protected:
 
 	std::string name;
+	AMateria*	inventory[4];
 
 };
 

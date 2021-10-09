@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:43:12 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/08 15:27:47 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/09 16:48:28 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int main(void)
 	std::cout << "Dog brain idea[0]     : " << dog->getBrain()->getIdeas()[0] << std::endl;
 	std::cout << "CopyDog brain idea[0] : " << copyDog->getBrain()->getIdeas()[0] << std::endl;
 	std::cout << std::endl;
+
 	delete(dog);
 	delete(copyDog);
 

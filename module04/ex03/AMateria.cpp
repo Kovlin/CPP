@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 15:54:25 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/08 16:50:42 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/09 18:07:28 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ std::string const & AMateria::getType() const{
 }
 
 void	AMateria::use(ICharacter& target){
-	std::cout << "Materia of type " << this->getType() << " was use on " << target.getName() << std::endl;
+	(void)target;
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:53:05 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/08 15:23:35 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/09 16:49:07 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ Dog::~Dog(){
 
 Dog&		Dog::operator=(Dog const &rhs){
 	this->setType(rhs.getType());
+	delete(this->_brain);
+	this->_brain = new Brain(*rhs.getBrain());
 	return (*this);
 }
 

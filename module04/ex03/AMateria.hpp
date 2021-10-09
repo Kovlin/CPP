@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 15:52:43 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/08 16:50:15 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/09 16:03:47 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria{
 
