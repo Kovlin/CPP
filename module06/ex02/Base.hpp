@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:37:25 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/14 15:15:36 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/14 15:46:38 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-#define DATA_H
+#ifndef BASE_H
+#define BASE_H
 
-class Data{
+class Base{
 
 public:
-	
-	Data();
-	Data(int a, int b);
-	Data(Data const &);
-	virtual ~Data();
 
-	Data&	operator=(Data const &rhs);
-
-	int		getA() const;
-	int		getB() const;
-
-private:
-
-	int _a;
-	int _b;
-
+	virtual ~Base(){};
 };
 
 #endif
