@@ -6,7 +6,7 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:50:41 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/13 19:10:48 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/14 19:36:56 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	printCastChar(char c)
 	std::cout << "char: " << c << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << static_cast<float>(c) << ".0f" <<std::endl;
-	std::cout << "double: " << static_cast<double>(c) << ".0f" <<std::endl;
+	std::cout << "double: " << static_cast<double>(c) << ".0" <<std::endl;
 }
 
 void	printCastInt(int n)
@@ -35,7 +35,7 @@ void	printCastInt(int n)
 		std::cout << static_cast<char>(n) << std::endl;
 	std::cout << "int: " << n << std::endl;
 	std::cout << "float: " << static_cast<float>(n) << ".0f" <<std::endl;
-	std::cout << "double: " << static_cast<double>(n) << ".0f" <<std::endl;
+	std::cout << "double: " << static_cast<double>(n) << ".0" <<std::endl;
 }
 
 void	printCastFloat(float f)
