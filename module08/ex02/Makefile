@@ -6,18 +6,17 @@
 #    By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/24 15:02:29 by rlinkov           #+#    #+#              #
-#    Updated: 2021/10/16 19:11:55 by rlinkov          ###   ########.fr        #
+#    Updated: 2021/10/18 14:42:15 by rlinkov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	span
+NAME		=	mutantstack
 
 CXX			=	clang++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -rf
 
 SRCS		=	main.cpp \
-				span.cpp \
 				
 
 OBJS		=	${SRCS:.cpp=.o}

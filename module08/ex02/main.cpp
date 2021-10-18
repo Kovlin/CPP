@@ -6,124 +6,117 @@
 /*   By: rlinkov <rlinkov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:10:15 by rlinkov           #+#    #+#             */
-/*   Updated: 2021/10/16 19:22:31 by rlinkov          ###   ########.fr       */
+/*   Updated: 2021/10/18 15:15:04 by rlinkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "span.hpp"
-#include <fstream>
-
-void	display(int &x)
-{
-	std::cout << x << " ";
-}
-
-void	displayFile(std::vector<int> v)
-{
-	std::ofstream ofs("numbers.out", std::ios_base::app);
-	for (std::vector<int>::iterator i = v.begin(); i != v.end(); ++i)
-	{
-		ofs << "'" << *i << "'";
-	}
-	ofs.close();
-}
+#include "mutantstack.hpp"
+#include <list>
 
 int main()
 {
-	srand(time(NULL));
-
 	std::cout << "=========== TEST FROM THE SUBJECT ==========" << std::endl;
+	std::cout << "=========== TEST WITH MSTACK<INT> ==========" << std::endl;
+	{	
+		MutantStack<int> mstack;
+		mstack.push(5);
+		mstack.push(17);
+		std::cout << mstack.top() << std::endl;
+		mstack.pop();
+		std::cout << mstack.size() << std::endl;
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+		mstack.push(0);
+		MutantStack<int>::iterator it = mstack.begin();
+		MutantStack<int>::iterator ite = mstack.end();
+		++it;
+		--it;
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;
+		}
+		std::stack<int> s(mstack);
+	}
 	
-	Span sp = Span(5);
-	sp.addNumber(5);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
-
-	std::cout << "=========== CUSTOM TEST ==========" << std::endl << std::endl;
-	std::cout << "=========== ADD EXCEPTION BY N ==========" << std::endl << std::endl;
-	try{
-		sp.addNumber(11);
-	}
-	catch(std::exception& e)
+	std::cout << "=========== TEST WITH LIST<INT> ==========" << std::endl;
 	{
-		std::cout << e.what() << std::endl;
+		std::list<int> lst;
+		lst.push_back(5);
+		lst.push_back(17);
+		std::cout << lst.back() << std::endl;
+		lst.remove(lst.back());
+		std::cout << lst.size() << std::endl;
+		lst.push_back(3);
+		lst.push_back(5);
+		lst.push_back(737);
+		lst.push_back(0);
+		std::list<int>::iterator it = lst.begin();
+		std::list<int>::iterator ite = lst.end();
+		++it;
+		--it;
+		while (it != ite)
+		{
+		std::cout << *it << std::endl;
+		++it;
+		}
+		std::list<int> s(lst);
 	}
-	std::cout << std::endl;
-	std::cout << "=========== ADD EXCEPTION BY ITER ==========" << std::endl << std::endl;
-	try{
-		int n = 10;
-
-		Span sp = Span(n);
-		std::vector<int> v;
-
-		for (int i = 0; i < n; i++)
-			v.push_back(rand() % 100);
-
-		sp.addNumber(v.begin(), v.end());
-		sp.addNumber(v.begin(), v.end());
-	}
-	catch(std::exception& e)
+	std::cout << "=========== TEST WITH MSTACK<CHAR> ==========" << std::endl;
 	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	std::cout << "=========== ADD EXCEPTION BY ITER THEN N ==========" << std::endl << std::endl;
-	try{
-		int n = 10;
+		MutantStack<char> mstack;
+		MutantStack<char>::iterator it;
 
-		Span sp = Span(n);
-		std::vector<int> v;
+		std::cout << "Push: a" << std::endl;
+		mstack.push('a');
+		std::cout << "Push: b" << std::endl;
+		mstack.push('b');
+		std::cout << "Push: c" << std::endl;
+		mstack.push('c');
+		std::cout << "Push: d" << std::endl;
+		mstack.push('d');
 
-		for (int i = 0; i < n; i++)
-			v.push_back(rand() % 100);
-
-		sp.addNumber(v.begin(), v.end());
-		sp.addNumber(11);
-	}
-	catch(std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	std::cout << "=========== 10 NUMBERS TEST ==========" << std::endl;
-	{
-		int n = 10;
-
-		Span sp = Span(n);
-		std::vector<int> v;
-
-		for (int i = 0; i < n; i++)
-			v.push_back(rand() % 100);
-
-		sp.addNumber(v.begin(), v.end());
-
-		std::cout << "Numbers: ";
-		for_each(v.begin(), v.end(), display);
+		std::cout << "Size: " << mstack.size() << std::endl;
+		std::cout << "Stack: ";
+		for (it = mstack.begin(); it != mstack.end(); it++)
+				std::cout << *it << " ";
 		std::cout << std::endl;
 
-		std::cout << "Shortest span: "  << sp.shortestSpan() << std::endl;
-		std::cout << "Longest  span: "  << sp.longestSpan() << std::endl;
+		while (!mstack.empty())
+		{
+				std::cout << "Pop: " << mstack.top() << std::endl;
+				mstack.pop();
+		}
+		std::cout << "Size: " << mstack.size() << std::endl;
 	}
-	std::cout << std::endl;
-	std::cout << "=========== 25 000 NUMBERS TEST ==========" << std::endl;
+	std::cout << "=========== TEST WITH LIST<CHAR> ==========" << std::endl;
 	{
-		int n = 25000;
+		std::list<char> lst;
+		std::list<char>::iterator it;
 
-		Span sp = Span(n);
-		std::vector<int> v;
+		std::cout << "Push: a" << std::endl;
+		lst.push_back('a');
+		std::cout << "Push: b" << std::endl;
+		lst.push_back('b');
+		std::cout << "Push: c" << std::endl;
+		lst.push_back('c');
+		std::cout << "Push: d" << std::endl;
+		lst.push_back('d');
 
-		for (int i = 0; i < n; i++)
-			v.push_back(rand() % 100000);
+		std::cout << "Size: " << lst.size() << std::endl;
+		std::cout << "Stack: ";
+		for (it = lst.begin(); it != lst.end(); it++)
+				std::cout << *it << " ";
+		std::cout << std::endl;
 
-		sp.addNumber(v.begin(), v.end());
-		displayFile(v);
-
-		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-		std::cout << "Longest  span: " << sp.longestSpan() << std::endl;
+		while (!lst.empty())
+		{
+				std::cout << "Pop: " << lst.back() << std::endl;
+				lst.remove(lst.back());
+				std::cout << "Pop: " << lst.back() << std::endl;
+				lst.remove(lst.back());
+		}
+		std::cout << "Size: " << lst.size() << std::endl;
 	}
-	return 0;
 }
