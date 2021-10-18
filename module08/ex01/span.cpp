@@ -52,19 +52,36 @@ void	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterato
 }
 
 int		Span::shortestSpan() const{
-	if (this->_storage->size() <= 1)
-		throw(NoSpanException());
-	std::vector<int>::iterator itMin = std::min_element(this->_storage->begin(), this->_storage->end());
-	int min = *std::min_element(this->_storage->begin(), this->_storage->end());
-	int minSnd = *std::max_element(this->_storage->begin(), this->_storage->end());
-	for (std::vector<int>::iterator begin = this->_storage->begin(); begin != this->_storage->end(); ++begin)
-	{
-		if (begin == itMin)
-			continue ;
-		if (*begin <= minSnd)
-			minSnd = *begin;
-	}
-	return (minSnd - min);
+//    if (this->_storage->size() <= 1)
+//        throw(NoSpanException());
+//    std::vector<int>::iterator itMin = std::min_element(this->_storage->begin(), this->_storage->end());
+//    int min = *std::min_element(this->_storage->begin(), this->_storage->end());
+//    int minSnd = *std::max_element(this->_storage->begin(), this->_storage->end());
+//    for (std::vector<int>::iterator begin = this->_storage->begin(); begin != this->_storage->end(); ++begin)
+//    {
+//        if (begin == itMin)
+//            continue ;
+//        if (*begin <= minSnd)
+//            minSnd = *begin;
+//    }
+//    return (minSnd - min);
+    if (this->_storage->size() <= 1)
+        throw(NoSpanException());
+    std::vector<int>::iterator it;
+    std::vector<int>::iterator it2;
+    int min = longestSpan();
+    for (it = this->_storage->begin(); it != this->_storage->end(); it++)
+    {
+        it2 = it;
+        for (std::advance(it2,1);it2 != this->_storage->end(); ++it2)
+        {
+            if (abs(*it - *it2) < min && abs(*it - *it2) != 0)
+            {
+                min = abs(*it - *it2);
+            }
+        }
+    }
+    return min;
 }
 
 int		Span::longestSpan() const{
